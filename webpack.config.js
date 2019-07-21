@@ -7,22 +7,28 @@ module.exports = {
     mode: 'development',
     entry: {
         app: './src/index.js',
-        print: './src/print.js'
+        // another: './src/another-module.js'
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: 'Output Management'
-        })
-    ],
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './Base'
-    },
+    // plugins: [
+    //     new CleanWebpackPlugin(),
+    //     new HtmlWebpackPlugin({
+    //         title: 'Output Management'
+    //     })
+    // ],
+    // devtool: 'inline-source-map',
+    // devServer: {
+    //     contentBase: './Base'
+    // },
     output: {
         // filename: 'bundle.js',
         filename: '[name].bundle.js',
+        chunkFilename: "[name].bundle.js",
         path: path.resolve(__dirname, 'dist'),
-        publicPath: "/"
-    }
+        // publicPath: "/"
+    },
+    // optimization: {
+    //     //     splitChunks:{
+    //     //         chunks: "all"
+    //     //     }
+    //     // }
 }
