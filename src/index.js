@@ -1,18 +1,30 @@
-import _ from 'lodash';
-import printMe from './print.js';
+// import _ from 'lodash';
 
-function component() {
-    var element = document.createElement('div');
-    const btn = document.createElement('button');
+// function component() {
+function getComponent() {
+    // var element = document.createElement('div');
+    // const btn = document.createElement('button');
+    //
+    // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    //
+    // btn.innerHTML = 'Click me and check the console!';
+    // btn.onclick = printMe;
+    //
+    // element.appendChild(btn);
+    //
+    // return element;
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    return import(/* webpackChunkName: "lodash" */ 'lodash').then(({default: _}) => {
+        var element = document.createElement('div');
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-    element.appendChild(btn);
-
-    return element;
+        return element;
+    })
 }
+
+getComponent().then(component => {
+    document.body.appendChild(component);
+})
 
 document.body.appendChild(component());
